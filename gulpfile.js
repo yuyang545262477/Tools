@@ -17,10 +17,16 @@ var gulp = require('gulp'),
 
 
 gulp.task('htmls', function() {
-  return gulp.src('src/*.html')
+  return gulp.src('src/**/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/htmls'))
 });
+
+gulp.task('index', function () {
+    return gulp.src('src/index.html')
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('dist'))
+})
 
 //编译sass，自动添加前缀
 gulp.task('styles',function(){
@@ -64,8 +70,11 @@ gulp.task('server',function(){
             baseDir:'dist'
         }
     });
+    //watch index.html
+    gulp.watch('src/index.html', ['index']);
     //watch .html files
-    gulp.watch('src/*.html', ['htmls']);
+    gulp.watch('src/htmls/**/*.html', ['htmls']);
+
     //watch .css files
     gulp.watch('src/styles/**/*.scss',['styles']);
     //watch .js files
@@ -77,5 +86,5 @@ gulp.task('server',function(){
 
 //设置默认任务
 gulp.task('default',function(){//clean任务执行完成之前才会去运行其他的任务
-    gulp.start('htmls','styles','scripts','images','server');
+    gulp.start('index','htmls','styles','scripts','images','server');
 });
