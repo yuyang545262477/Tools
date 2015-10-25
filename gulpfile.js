@@ -61,7 +61,7 @@ gulp.task('images',function(){
 });
 //清除文件
 gulp.task('clean',function(cb){
-    del(['dist/**/*.css','dist/**/*.js','dist/img','dist/*.html'],cb)//cb 确保在退出前完成任务
+    del(['src/styles/*.scss','src/scripts/*.js','src/img','src/htmls/*.html'],cb)//cb 确保在退出前完成任务
 });
 //设置服务器
 gulp.task('server',function(){
