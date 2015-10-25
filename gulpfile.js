@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('htmls', function() {
-  return gulp.src('src/**/*.html')
+  return gulp.src('src/htmls/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist/htmls'))
 });
