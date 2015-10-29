@@ -36,7 +36,7 @@ gulp.task('styles',function(){
                 .pipe(gulp.dest('dist/transition/css'))
                 .pipe(rename({suffix: '.min'}))
                 .pipe(minifycss())
-                .pipe(gulp.dest('dist/css'))
+                .pipe(gulp.dest('dist/styles'))
                 .pipe(notify({message: 'Style tast complete' }))
 
 });
